@@ -4,6 +4,8 @@
 <dict>
 	<key>ACPI</key>
 	<dict>
+		<key>AutoMerge</key>
+		<true/>
 		<key>DSDT</key>
 		<dict>
 			<key>Debug</key>
@@ -11,9 +13,9 @@
 			<key>Fixes</key>
 			<dict>
 				<key>FixHPET</key>
-				<true/>
+				<false/>
 				<key>FixRegions</key>
-				<true/>
+				<false/>
 			</dict>
 			<key>Patches</key>
 			<array>
@@ -220,11 +222,11 @@
 					<false/>
 					<key>Find</key>
 					<data>
-					WEhDSQhf
+					WEhDSQ==
 					</data>
 					<key>Replace</key>
 					<data>
-					WEhDXwhf
+					WEhDXw==
 					</data>
 				</dict>
 				<dict>
@@ -429,8 +431,14 @@
 			<key>SlpSmiAtWake</key>
 			<true/>
 			<key>SuspendOverride</key>
-			<true/>
+			<false/>
 		</dict>
+		<key>DisabledAML</key>
+		<array>
+			<string>SSDT.aml</string>
+			<string>SSDT-XCPM.aml</string>
+			<string>SSDT-PluginType1.aml</string>
+		</array>
 		<key>DropTables</key>
 		<array>
 			<dict>
@@ -439,49 +447,21 @@
 			</dict>
 			<dict>
 				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>Cpu0Ist</string>
+				<string>#MCFG</string>
 			</dict>
 			<dict>
 				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>ApIst</string>
+				<string>BGRT</string>
 			</dict>
 			<dict>
 				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>Cpu0Cst</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>ApCst</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>CpuSsdt</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>Cpc_Tabl</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>CppcTabl</string>
+				<string>DMAR</string>
 			</dict>
 		</array>
-		<key>HaltEnabler</key>
+		<key>FixHeaders</key>
 		<true/>
+		<key>HaltEnabler</key>
+		<false/>
 		<key>SSDT</key>
 		<dict>
 			<key>DropOem</key>
@@ -492,24 +472,10 @@
 				<false/>
 				<key>PStates</key>
 				<false/>
+				<key>PluginType</key>
+				<true/>
 			</dict>
-			<key>PluginType</key>
-			<string>1</string>
 		</dict>
-		<key>SortedOrder</key>
-		<array>
-			<string>SSDT-RMCF.aml</string>
-			<string>SSDT-BATT.aml</string>
-			<string>SSDT-IGPU.aml</string>
-			<string>SSDT-PNLF.aml</string>
-			<string>SSDT-HDAU.aml</string>
-			<string>SSDT-HDEF.aml</string>
-			<string>SSDT-GPRW.aml</string>
-			<string>SSDT-LPC.aml</string>
-			<string>SSDT-XCPM.aml</string>
-			<string>ssdt.aml</string>
-			<string>SSDT-UIAC.aml</string>
-		</array>
 	</dict>
 	<key>Boot</key>
 	<dict>
@@ -544,22 +510,24 @@
 	<dict>
 		<key>Audio</key>
 		<dict>
-			<key>Inject</key>
-			<integer>28</integer>
+			<key>ResetHDA</key>
+			<true/>
 		</dict>
 		<key>FakeID</key>
 		<dict>
 			<key>IntelGFX</key>
 			<string>0x04128086</string>
 		</dict>
+		<key>LANInjection</key>
+		<false/>
 		<key>USB</key>
 		<dict>
 			<key>AddClockID</key>
-			<false/>
+			<true/>
 			<key>FixOwnership</key>
 			<true/>
 			<key>HighCurrent</key>
-			<true/>
+			<false/>
 		</dict>
 	</dict>
 	<key>DisableDrivers</key>
@@ -635,22 +603,6 @@
 		<key>KextsToPatch</key>
 		<array>
 			<dict>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				g710////EA==
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>Name</key>
-				<string>AppleUSBXHCIPCI</string>
-				<key>Replace</key>
-				<data>
-				g710////Fg==
-				</data>
-			</dict>
-			<dict>
 				<key>Comment</key>
 				<string>0x0a260006 9MB cursor bytes patch&lt;</string>
 				<key>Disabled</key>
@@ -700,6 +652,24 @@
 				<key>Replace</key>
 				<data>
 				RiV1VHh4eHgA
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Enable TRIM for SSD</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				AEFQUExFIFNTRAA=
+				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>Name</key>
+				<string>com.apple.iokit.IOAHCIBlockStorage</string>
+				<key>Replace</key>
+				<data>
+				AAAAAAAAAAAAAAA=
 				</data>
 			</dict>
 		</array>
@@ -768,7 +738,7 @@
 	<key>SystemParameters</key>
 	<dict>
 		<key>CustomUUID</key>
-		<string>A08210E8-5D33-6C58-B7D5-4E9346D6BF32</string>
+		<string></string>
 		<key>InjectKexts</key>
 		<string>Detect</string>
 		<key>InjectSystemID</key>
