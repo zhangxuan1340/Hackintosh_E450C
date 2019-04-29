@@ -1,5 +1,9 @@
 # Hackintosh_E450C 
 
+``` bash
+git clone https://github.com/zhangxuan1340/Hackintosh_E450C.git -b macOS14 --depth=1
+```
+克隆版本分支macOS14版本。
 E450C 黑苹果目前已经完成一下功能：
 
 * IGPU Hotpatch驱动完成。
@@ -12,11 +16,10 @@ E450C 黑苹果目前已经完成一下功能：
 
 * LPC注入
 
-* 更新至macOS 10.14.2 后睡眠唤醒出现问题，唤醒后死机，正在排查原因，待后续更新。
-
+* 更新至macOS 10.14.2 修复花屏睡眠无法唤醒问题。
 未完成：
 
-* 睡眠唤醒故障
+* HDMi外接屏幕
 
 Clover 文件夹内包含
 
@@ -27,5 +30,3 @@ Clover 文件夹内包含
     * 去除ig-platform-id 改用Hotpatch驱动
 
     * Config搭配Hotpatch即可引导
-
-目前除去睡眠唤醒问题，基本亦可以正常使用。
