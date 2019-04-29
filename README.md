@@ -1,5 +1,10 @@
 # Hackintosh_E450C 
 
+``` bash
+git clone https://github.com/zhangxuan1340/Hackintosh_E450C.git -b macOS14
+```
+克隆分支macOS14版本，master版本并无当前最新版本的支持，仅供个人测试。
+如您需要Retina显示器补丁请克隆master版本也可以直接下载ZIP。
 E450C 黑苹果目前已经完成一下功能：
 
 * IGPU Hotpatch驱动完成。
